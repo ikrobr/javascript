@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Tabuada</h1>
+    </header>
+
+    <section>
+        <div>
+            Digite um número: <input type="number" name="number" id="numero">
+            <input type="button" value="Gerar Tabuada" onclick="Gerar()">
+        </div>
+
+        <div>
+            <select name="resultadotab" id="restabuada" size="5px"></select>
+        </div>
+    </section>
+
+    <br>
+    <footer>CursoemVídeo</footer>
+
+    <script>
+        function Gerar() {
+            var num = document.getElementById('numero')
+            var restab = document.getElementById('restabuada')
+            if (num.value == 0 || num.value > 10) {
+                alert('Caixa vazia ou número inválido')
+            } else {
+                var n = Number(num.value)
+                var c = 1
+                restab.innerHTML = ''
+                while (c <= 10) {
+                var item = document.createElement('option')
+                item.text = `${n} x ${c} = ${n*c} `
+                restab.appendChild(item)
+                c++
+                } 
+            }
+
+        }
+    </script>
+</body>
+
+</html>

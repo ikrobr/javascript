@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Vamos Contar</h1>
+    </header>
+
+    <section>
+        <div id="dados">
+            <p>Ínicio: <input type="number" name="inicio" id="txti"></p>
+            <p>Fim: <input type="number" name="fim" id="txtf"></p>
+            <p>Passo: <input type="number" name="passo" id="txtp"></p>
+            <p><input type="button" value="Contar" onclick="contar()"></p> <!--chamando a função através de 1 clique-->
+        </div>
+        <div id="res">
+            Preparando Contagem...
+        </div>
+
+    </section>
+    <br>
+    <footer>@CursoemVídeo</footer>
+
+    <script>
+        function contar() {
+            let ini = document.getElementById('txti')
+            let fim = document.getElementById('txtf')
+            let passo = document.getElementById('txtp')
+            let res = document.getElementById('res')
+
+            if (ini.value.length == 0 || fim.value.length == 0 || passo.value.length == 0) {
+                alert('Erro, preencha as caixas')
+            } else {
+                //testes: alert('Tudo ok')
+                res.innerHTML = 'Contando: <br>'
+                let i = Number(ini.value)
+                let f = Number(fim.value)
+                let p = Number(passo.value)
+                if (p <= 0) {
+                    alert('Passo inválido, porém considerando o passo 1:')
+                    p = 1
+                    //evitar congelar o navegador
+                }
+               
+                if (i < f) {
+                    let c = i
+                    while (c <= f) {
+                        res.innerHTML += ` ${c} \u{279F}`
+                        c += p //c= c + p                
+                    }
+                } else {
+                    for(let c = i; c >= f; c -= p) {
+                        res.innerHTML += ` ${c} \u{279F}`
+                    } //se o valor do ínicio for maior q o do final, ele irá pegar o valor do passo e diminuirá do contador até a sentença dar false
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
